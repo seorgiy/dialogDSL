@@ -21,9 +21,9 @@
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref Diag) {
   switch(Dialog.CurrentNode) {
     case "First time":
-    Dialog.Text = DLGO(StringFromKey("key_1),"");
-    Link.l1 = DLGO(StringFromKey("key_2),"");
-    Link.l1.go = "meeting";
+      Dialog.Text = DLGO(StringFromKey("key_1),"");
+      Link.l1 = DLGO(StringFromKey("key_2),"");
+      Link.l1.go = "meeting";
     break;
   }
 }
