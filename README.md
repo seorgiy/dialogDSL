@@ -19,15 +19,15 @@
 #include "dialogDSL.c"
 
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref Diag) {
-	ref PChar;
-	PChar = GetMainCharacter();
-	string NPC_Meeting;
-	
-	switch(Dialog.CurrentNode) {
-		case "First time":
-      Dialog.Text = DLGO(StringFromKey("key_1),"");
-      Link.l1 = DLGO(StringFromKey("key_2),"");
-      Link.l1.go = "meeting";
+  ref PChar;
+  PChar = GetMainCharacter();
+  string NPC_Meeting;
+
+  switch(Dialog.CurrentNode) {
+    case "First time":
+    Dialog.Text = DLGO(StringFromKey("key_1),"");
+    Link.l1 = DLGO(StringFromKey("key_2),"");
+    Link.l1.go = "meeting";
     break;
   }
 }
