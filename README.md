@@ -13,7 +13,7 @@
 #include "DialogDSL.c"
 4. Теперь вы можете в этом диалоге вызывать функцию DLGO(text, context), внутри которой и происходит вся магия.
 
-Например
+Hello world
 ```
 >some_dialog.c
 #include "dialogDSL.c"
