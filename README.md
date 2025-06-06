@@ -19,10 +19,6 @@
 #include "dialogDSL.c"
 
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref Diag) {
-  ref PChar;
-  PChar = GetMainCharacter();
-  string NPC_Meeting;
-
   switch(Dialog.CurrentNode) {
     case "First time":
     Dialog.Text = DLGO(StringFromKey("key_1),"");
