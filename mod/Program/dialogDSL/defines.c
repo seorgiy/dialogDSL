@@ -23,9 +23,11 @@ string DLG_RunKnownFunction(string functionName, ref context, ref args, int args
     case "goodbad":         return DLG_GoodBad(&args, &pchar);                                       break;
     case "npcGoodbad":      return DLG_GoodBad(&args, &CharacterRef);                                break;
     case "key":             return xiStr(DLG_A(&args, 0));                                           break;
+    case "link":            return DLG_Link(&args, &context);                                        break;
     case "shipManWoman":    return DLG_ShipManWoman(&args, &pchar);                                  break;
     case "npcShipManWoman": return DLG_ShipManWoman(&args, &CharacterRef);                           break;
     case "ctxShipManWoman": return DLG_ShipManWoman(&args, &context);                                break;
+    case "workType":        return GetWorkTypeOfMan(&CharacterRef, DLG_A(&args, 0));                 break;
     break;
   }
 

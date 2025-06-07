@@ -24,3 +24,9 @@ string DLG_ShipManWoman(ref args, ref chr)
   ref rBaseShip = GetRealShip(nShipType);
   return GetShipSexWord(rBaseShip.BaseName, DLG_A(&args, 0), DLG_A(&args, 1));
 }
+
+// Return another localized key with the same context
+string DLG_Link(ref args, ref context)
+{
+  return DLGO(StringFromKey(DLG_A(&args, 0)), &context);
+}
