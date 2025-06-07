@@ -21,7 +21,7 @@ Hello world
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref Diag) {
   switch(Dialog.CurrentNode) {
     case "First time":
-      Dialog.Text = DLGO(StringFromKey("key_1),"");
+      Dialog.Text = DLGO($hello $name, "");
       Link.l1 = DLGO(StringFromKey("key_2),"");
       Link.l1.go = "meeting";
     break;
