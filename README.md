@@ -5,6 +5,7 @@
 
 [Подробнее](https://github.com/seorgiy/dialogDSL/blob/master/HowTo.md)<br>
 [Примеры](https://github.com/seorgiy/dialogDSL/blob/master/Examples.md)
+[Полный список волшебных ключей](https://github.com/seorgiy/dialogDSL/blob/master/mod/Program/dialogDSL/defines.c)
 
 Чтобы использовать в своём моде:
 1. Подпишитесь на мод в мастерской.
