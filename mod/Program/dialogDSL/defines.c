@@ -28,6 +28,9 @@ string DLG_RunKnownFunction(string functionName, ref context, ref args, int args
     case "npcShipManWoman": return DLG_ShipManWoman(&args, &CharacterRef);                           break;
     case "ctxShipManWoman": return DLG_ShipManWoman(&args, &context);                                break;
     case "workType":        return GetWorkTypeOfMan(&CharacterRef, DLG_A(&args, 0));                 break;
+    case "hasAttr":         return DLG_IfHasAttribute(&args, &pchar);                                break;
+    case "npcHasAttr":      return DLG_IfHasAttribute(&args, &CharacterRef);                         break;
+    case "ctxHasAttr":      return DLG_IfHasAttribute(&args, &context);                              break;
     break;
   }
 

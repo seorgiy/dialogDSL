@@ -30,3 +30,9 @@ string DLG_Link(ref args, ref context)
 {
   return DLGO(StringFromKey(DLG_A(&args, 0)), &context);
 }
+
+string DLG_IfHasAttribute(ref args, ref context)
+{
+  if (CheckAttribute(&context, DLG_A(&args, 0))) return DLG_A(&args, 1);
+  return DLG_A(&args, 2);
+}
