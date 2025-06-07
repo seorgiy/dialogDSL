@@ -16,3 +16,11 @@ string DLG_GoodBad(ref args, ref chr)
   if (nobility > 30) return DLG_A(&args, 1);
   return DLG_A(&args, 2);
 }
+
+// Localized prhase for the male/female ship class name like
+string DLG_ShipManWoman(ref args, ref chr)
+{
+  int nShipType = GetCharacterShipType(&chr);
+  ref rBaseShip = GetRealShip(nShipType);
+  return GetShipSexWord(rBaseShip.BaseName, DLG_A(&args, 0), DLG_A(&args, 1));
+}
