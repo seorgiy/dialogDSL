@@ -4,8 +4,8 @@
 Представляет из себя набор функций, позволяющий использовать упрощённый код внутри файлов локализации.txt, конкретно для разруливания вопросов пола персонажей, падежей, склонений, числительных, обращений и прочего синтаксического стафа.
 
 [Подробнее](https://github.com/seorgiy/dialogDSL/blob/master/HowTo.md)<br>
-[Примеры](https://github.com/seorgiy/dialogDSL/blob/master/Examples.md)
-[Полный список волшебных ключей](https://github.com/seorgiy/dialogDSL/blob/master/mod/Program/dialogDSL/defines.c)
+[Примеры](https://github.com/seorgiy/dialogDSL/blob/master/Examples.md)<br>
+[Полный список волшебных ключей](https://github.com/seorgiy/dialogDSL/blob/master/mod/Program/dialogDSL/defines.c)<br>
 
 Чтобы использовать в своём моде:
 1. Подпишитесь на мод в мастерской.
