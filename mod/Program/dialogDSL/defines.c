@@ -6,21 +6,21 @@ string DLG_RunKnownFunction(string functionName, ref context, ref args, int args
 {
   switch (functionName)
   {
-    case "manWoman":      return GetSexPhrase(DLG_A(&args, 0), DLG_A(&args, 1));                   break;
-    case "NpcManWoman":   return NPCharSexPhrase(&CharacterRef, DLG_A(&args, 0), DLG_A(&args, 1)); break;
-    case "days":          return FindRussianDaysString(sti(DLG_A(&args, 0)));                      break;
-    case "dublon":        return FindRussianDublonString(sti(DLG_A(&args, 0)));                    break;
-    case "qty":           return FindRussianQtyString(sti(DLG_A(&args, 0)));                       break;
-    case "month":         return FindRussianMonthString(sti(DLG_A(&args, 0)));                     break;
-    case "people":        return FindRussianPeoplesString(sti(DLG_A(&args, 0))), DLG_A(&args, 1);  break;
-    case "slaves":        return FindRussianSlavesString(sti(DLG_A(&args, 0))), DLG_A(&args, 1);   break;
-    case "sailors":       return FindRussianSailorString(sti(DLG_A(&args, 0))), DLG_A(&args, 1);   break;
-    case "rand":          return DLG_RandArgument(&args, argsCount);                               break;
-    case "attr":          return DLG_A(&args, 0);                                                  break;
-    case "ShipClass":     return DLG_ShipClass(&args, &pchar);                                     break;
-    case "$NPCShipClass": return DLG_ShipClass(&args, &CharacterRef);                              break;
-    case "goodbad":       return DLG_GoodBad(&args, &pchar);                                       break;
-    case "NPCgoodbad":    return DLG_GoodBad(&args, &CharacterRef);                                break;
+    case "manWoman":     return GetSexPhrase(DLG_A(&args, 0), DLG_A(&args, 1));                   break;
+    case "NpcManWoman":  return NPCharSexPhrase(&CharacterRef, DLG_A(&args, 0), DLG_A(&args, 1)); break;
+    case "days":         return FindRussianDaysString(sti(DLG_A(&args, 0)));                      break;
+    case "dublon":       return FindRussianDublonString(sti(DLG_A(&args, 0)));                    break;
+    case "qty":          return FindRussianQtyString(sti(DLG_A(&args, 0)));                       break;
+    case "month":        return FindRussianMonthString(sti(DLG_A(&args, 0)));                     break;
+    case "people":       return FindRussianPeoplesString(sti(DLG_A(&args, 0))), DLG_A(&args, 1);  break;
+    case "slaves":       return FindRussianSlavesString(sti(DLG_A(&args, 0))), DLG_A(&args, 1);   break;
+    case "sailors":      return FindRussianSailorString(sti(DLG_A(&args, 0))), DLG_A(&args, 1);   break;
+    case "rand":         return DLG_RandArgument(&args, argsCount);                               break;
+    case "attr":         return DLG_A(&args, 0);                                                  break;
+    case "ShipClass":    return DLG_ShipClass(&args, &pchar);                                     break;
+    case "NPCShipClass": return DLG_ShipClass(&args, &CharacterRef);                              break;
+    case "goodbad":      return DLG_GoodBad(&args, &pchar);                                       break;
+    case "NPCgoodbad":   return DLG_GoodBad(&args, &CharacterRef);                                break;
     break;
   }
 
