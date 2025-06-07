@@ -8,6 +8,7 @@ string DLG_RunKnownFunction(string functionName, ref context, ref args, int args
   {
     case "manWoman":     return GetSexPhrase(DLG_A(&args, 0), DLG_A(&args, 1));                   break;
     case "NpcManWoman":  return NPCharSexPhrase(&CharacterRef, DLG_A(&args, 0), DLG_A(&args, 1)); break;
+    case "ctxManWoman":  return NPCharSexPhrase(&context, DLG_A(&args, 0), DLG_A(&args, 1));      break;
     case "days":         return FindRussianDaysString(sti(DLG_A(&args, 0)));                      break;
     case "dublon":       return FindRussianDublonString(sti(DLG_A(&args, 0)));                    break;
     case "qty":          return FindRussianQtyString(sti(DLG_A(&args, 0)));                       break;
