@@ -13,8 +13,8 @@ string DLGO(string input, ref context)
   DLG_EscapeAllChars(&input);            // escape all system chars like \( and \) to {{}}
   DLG_ReplaceSimpleKeys(&input);         // replace all the simple shortcuts like $shortcut
   DLG_RunAllFunctions(&input, &context); // replace all the functions like $func(args)
-  DLG_ModifyRegister(&input, "^");       // correcting upper letters like ^letter
-  DLG_ModifyRegister(&input, "_");       // correcting lower letters like _letter
+  DLG_ModifyRegister(&input, "^", 0);    // correcting upper letters like ^letter
+  DLG_ModifyRegister(&input, "_", 0);    // correcting lower letters like _letter
   DLG_UnescapeAllChars(&input);          // return all system chars back from {{}} to ()
   return "" + input;
 }
