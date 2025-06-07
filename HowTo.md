@@ -1,14 +1,16 @@
 С помощью DSL вы можете делать три группы вещей:<br><br>
 
-[Простые замены](https://github.com/seorgiy/dialogDSL/blob/master/Program/dialogDSL/simple_replace.c)<br>
+[Простые замены](https://github.com/seorgiy/dialogDSL/blob/master/Program/dialogDSL/core/simple_replace.c)<br>
 Ключик $playerName → поменяется на имя персонажа игрока. Тут всё просто.
 
-[Вызов функций](https://github.com/seorgiy/dialogDSL/blob/master/Program/dialogDSL/functions_replace.c)<br>
+[Вызов функций](https://github.com/seorgiy/dialogDSL/blob/master/Program/dialogDSL/core/functions_replace.c)<br>
 Ключик $funcName(arg0|arg1..arg9) → поменяется на вызов функции funcName. Важно, что функции  не те же, что в обычном коде, дабы максимально упростить восприятие текста для не-программиста. Однако и вызов обычных функций возможен с ограничениями: нельзя вызвать функцию без аргументов или с другим типом данных, кроме строковых.
 
-[Управление регистром](https://github.com/seorgiy/dialogDSL/blob/5b2e68438583adb697ec3c131de195cb13187f12/Program/dialogDSL.c#L17)<br>
+[Управление регистром](https://github.com/seorgiy/dialogDSL/core/text_utility.c)<br>
 Вставляя в текст ^ или _, вы меняете регистр следующего символа. Важно, что это происходит в самом конце, поэтому вы можете менять регистр того, что вернет замена или функция из предыдуших пунктов.
 Это удобно, если нужно получить "Месье" в начале предложения и "А вы, месье, кем будете?" где-то в середине.
+
+Короткий список всех доступных [замен](https://github.com/seorgiy/dialogDSL/blob/master/mod/Program/dialogDSL/defines.c), сюда же их можно добавлять в будущем.
 
 <h2>Почему бы не писать всё то же самое в файле диалога?</h2>
 
