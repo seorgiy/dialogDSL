@@ -2,12 +2,15 @@
 // Define all the new ones here
 
 // Predefined DSL-functions
+// Access global variables: pchar, CharacterRef + context object
 string DLG_RunKnownFunction(string functionName, ref context, ref args, int argsCount)
 {
+  ref NPC = &CharacterRef; // just for consistensy
+
   switch (functionName)
   {
     case "manWoman":        return GetSexPhrase(DLG_A(&args, 0), DLG_A(&args, 1));                   break;
-    case "npcManWoman":     return NPCharSexPhrase(&CharacterRef, DLG_A(&args, 0), DLG_A(&args, 1)); break;
+    case "npcManWoman":     return NPCharSexPhrase(&NPC, DLG_A(&args, 0), DLG_A(&args, 1));          break;
     case "ctxManWoman":     return NPCharSexPhrase(&context, DLG_A(&args, 0), DLG_A(&args, 1));      break;
     case "days":            return FindRussianDaysString(sti(DLG_A(&args, 0)));                      break;
     case "dublon":          return FindRussianDublonString(sti(DLG_A(&args, 0)));                    break;
@@ -19,17 +22,17 @@ string DLG_RunKnownFunction(string functionName, ref context, ref args, int args
     case "rand":            return DLG_RandArgument(&args, argsCount);                               break;
     case "attr":            return DLG_A(&args, 0);                                                  break;
     case "ShipClass":       return DLG_ShipClass(&args, &pchar);                                     break;
-    case "npcShipClass":    return DLG_ShipClass(&args, &CharacterRef);                              break;
-    case "goodbad":         return DLG_GoodBad(&args, &pchar);                                       break;
-    case "npcGoodbad":      return DLG_GoodBad(&args, &CharacterRef);                                break;
+    case "npcShipClass":    return DLG_ShipClass(&args, &NPC);                                       break;
+    case "goodBad":         return DLG_GoodBad(&args, &pchar);                                       break;
+    case "npcGoodBad":      return DLG_GoodBad(&args, &NPC);                                         break;
     case "key":             return xiStr(DLG_A(&args, 0));                                           break;
     case "link":            return DLG_Link(&args, &context);                                        break;
     case "shipManWoman":    return DLG_ShipManWoman(&args, &pchar);                                  break;
-    case "npcShipManWoman": return DLG_ShipManWoman(&args, &CharacterRef);                           break;
+    case "npcShipManWoman": return DLG_ShipManWoman(&args, &NPC);                                    break;
     case "ctxShipManWoman": return DLG_ShipManWoman(&args, &context);                                break;
-    case "workType":        return GetWorkTypeOfMan(&CharacterRef, DLG_A(&args, 0));                 break;
+    case "workType":        return GetWorkTypeOfMan(&NPC, DLG_A(&args, 0));                          break;
     case "hasAttr":         return DLG_IfHasAttribute(&args, &pchar);                                break;
-    case "npcHasAttr":      return DLG_IfHasAttribute(&args, &CharacterRef);                         break;
+    case "npcHasAttr":      return DLG_IfHasAttribute(&args, &NPC);                                  break;
     case "ctxHasAttr":      return DLG_IfHasAttribute(&args, &context);                              break;
     break;
   }
