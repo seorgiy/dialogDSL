@@ -7,7 +7,7 @@
 [Примеры](https://github.com/seorgiy/dialogDSL/blob/master/Examples.md)<br>
 [Полный список волшебных ключей](https://github.com/seorgiy/dialogDSL/blob/master/mod/Program/dialogDSL/defines.c)<br>
 
-Чтобы использовать в своём моде:
+### Как использовать
 1. Подпишитесь на мод в мастерской.
 2. Добавьте его в список необходимых продуктов в том моде, где вы хотите его использовать, чтобы игроки также подписались на него.
 3. В своём моде, в файле диалога, где вы хотите использовать этот мод, добавьте в начало файла
@@ -19,7 +19,7 @@
 Hello world
 ```
 >some_dialog.c
-#include "dialogDSL.c"
+#include "DialogDSL.c"
 
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref Diag) {
   switch(Dialog.CurrentNode) {
@@ -35,3 +35,22 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref Diag) {
 ```
 
 Не подключайте библиотеку в общих файлах игры, это вызовет конфликт с любым другим модом, где используется DLGO, из-за повторного объявления функций. Поэтому лучше подключать конкретно в файл диалога, который подгружается/выгружается по необходимости. Бонус: таким же образом работают файлы интерфейсов, поэтому подключать можно и туда тоже.
+
+### Для продвинутых парней
+
+Подключаем вариант с обработчиком всего диалога в целом
+```
+>some_dialog.c
+#include "DialogDSL.c"
+#include "DialogDSL\core\events.c" // Здесь добавлятся обработчик события
+
+void ProcessCommonDialogEvent(ref NPChar, aref Link, aref Diag) {
+  switch(Dialog.CurrentNode) {
+    // здесь сам диалог
+  }
+
+  Event("DLGO_ALL"); // В конец докидываем событие и готово
+}
+```
+
+Такой способ, впрочем, не запрещает точечное использование DLGO внутри диалога, если нужно передать особый контекст.
