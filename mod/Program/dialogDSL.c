@@ -7,7 +7,7 @@
 #include "dialogDSL\defines.c"                // DSL-functions and shorcuts defines here
 #include "dialogDSL\helpers.c"                // helpers for localization stuff
 
-// Main function to use from dialog files
+// Main function to use
 string DLGO(string input, ref context)
 {
   DLG_EscapeAllChars(&input);              // escape all system chars like \( and \) to {{}}
