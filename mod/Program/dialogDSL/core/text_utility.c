@@ -1,6 +1,12 @@
 // Text stuff
 
 // Lower and Upper register by keys "^" and "_" 
+void DLG_ModifyAllRegister(string input)
+{
+  DLG_ModifyRegister(&input, "^", 0);
+  DLG_ModifyRegister(&input, "_", 0);
+}
+
 void DLG_ModifyRegister(string input, string key, int startPos)
 {
   int markPos = FindSubStr(input, key, startPos);
