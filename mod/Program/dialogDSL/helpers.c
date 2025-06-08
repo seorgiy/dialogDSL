@@ -1,4 +1,4 @@
-// Additional localizing functions
+// Additional localization functions
 
 // Localized ship class with cases like "corvette, Корвет, Корвета, Корвету"
 string DLG_ShipClass(ref args, ref chr)
