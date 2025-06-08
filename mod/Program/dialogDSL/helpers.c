@@ -17,7 +17,7 @@ string DLG_GoodBad(ref args, ref chr)
   return DLG_A(&args, 2);
 }
 
-// Localized prhase for the male/female ship class name like
+// Localized prhase for the male/female ship class name
 string DLG_ShipManWoman(ref args, ref chr)
 {
   int nShipType = GetCharacterShipType(&chr);
