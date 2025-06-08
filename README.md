@@ -49,7 +49,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref Diag) {
     // здесь сам диалог
   }
 
-  Event("DLGO_ALL"); // В конец докидываем событие и готово
+  Event("DLGO_ALL", "i", &NullCharacter); // В конец докидываем событие и готово, можно передать здесь какой-нибудь контекст при желании, например, квест
 }
 ```
 
