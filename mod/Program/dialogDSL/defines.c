@@ -42,32 +42,38 @@ string DLG_RunKnownFunction(string functionName, ref context, ref args, int args
 
 // Predefined DSL-shortcuts replaces
 // If you wants to add new shortcut – add here and to function DLG_ReplaceSimpleKeys as well
-string DLG_RunReplace(string key)
+string DLG_RunReplace(string key, ref context)
 {
   switch(key)
   {
-    case "$sir":     return GetAddress_FormToNPC(&pchar);        break; // → Sir, Ledy for pchar sex
-    case "$npcSir":  return GetAddress_FormToNPC(&CharacterRef); break; // → Sir, Ledy for NPC sex
-    case "$name":    return pchar.name;                          break; // → Sharlie, Diego, Helen (pchar name)
-    case "$npcName": return CharacterRef.name;                   break; // → Robert, Carl, James (npcName)
-    case "$swear":   return RandSwear();                         break; // → God damn it!
-    case "$bye":     return Goodbye();                           break; // → Good bye!
-    case "$hello":   return TimeGreeting();                      break; // → Greetings!
-    case "$city":    return GetCityName(CharacterRef.city);      break; // → VIllemstad
+    case "$sir":         return GetAddress_FormToNPC(&pchar);        break; // → Sir, Ledy for pchar sex
+    case "$npcSir":      return GetAddress_FormToNPC(&CharacterRef); break; // → Sir, Ledy for NPC sex
+    case "$name":        return pchar.name;                          break; // → Sharlie, Diego, Helen (pchar name)
+    case "$npcName":     return CharacterRef.name;                   break; // → Robert, Carl, James (npcName)
+    case "$swear":       return RandSwear();                         break; // → God damn it!
+    case "$bye":         return Goodbye();                           break; // → Good bye!
+    case "$hello":       return TimeGreeting();                      break; // → Greetings!
+    case "$city":        return GetCityName(CharacterRef.city);      break; // → VIllemstad
+    case "$shipName":    return pchar.ship.name;                     break;
+    case "$npcShipName": return CharacterRef.ship.name;              break;
+    case "$ctxShipName": return context.ship.name;                   break;
   }
 
   return "Error: missing replacement for " + key;
 }
 
 // Predefined DSL-shortcuts keys
-void DLG_ReplaceSimpleKeys(string input)
+void DLG_ReplaceSimpleKeys(string input, ref context)
 {
-  DLG_Replace(&input, "$sir");
-  DLG_Replace(&input, "$npcSir");
-  DLG_Replace(&input, "$name");
-  DLG_Replace(&input, "$npcName");
-  DLG_Replace(&input, "$swear");
-  DLG_Replace(&input, "$bye");
-  DLG_Replace(&input, "$hello");
-  DLG_Replace(&input, "$city");
+  DLG_Replace(&input, &context, "$sir");
+  DLG_Replace(&input, &context, "$npcSir");
+  DLG_Replace(&input, &context, "$name");
+  DLG_Replace(&input, &context, "$npcName");
+  DLG_Replace(&input, &context, "$swear");
+  DLG_Replace(&input, &context, "$bye");
+  DLG_Replace(&input, &context, "$hello");
+  DLG_Replace(&input, &context, "$city");
+  DLG_Replace(&input, &context, "$shipName");
+  DLG_Replace(&input, &context, "$npcShipName");
+  DLG_Replace(&input, &context, "$ctxShipName");
 }
