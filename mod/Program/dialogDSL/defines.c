@@ -5,7 +5,7 @@
 // Access global variables: pchar, CharacterRef + context object
 string DLG_RunKnownFunction(string functionName, ref context, ref args, int argsCount)
 {
-  ref NPC = &CharacterRef; // just for consistensy
+  ref NPC = &CharacterRef; // just for consistency
 
   switch (functionName)
   {
