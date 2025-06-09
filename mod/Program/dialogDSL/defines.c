@@ -34,10 +34,9 @@ string DLG_RunKnownFunction(string functionName, ref context, ref args, int args
     case "hasAttr":         return DLG_IfHasAttribute(&args, &pchar);                                break;
     case "npcHasAttr":      return DLG_IfHasAttribute(&args, &NPC);                                  break;
     case "ctxHasAttr":      return DLG_IfHasAttribute(&args, &context);                              break;
-    break;
   }
 
-  return "";
+  return "$custom";
 }
 
 // Predefined DSL-shortcuts replaces

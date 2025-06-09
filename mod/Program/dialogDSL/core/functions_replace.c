@@ -64,9 +64,9 @@ string DLG_RunFunction(string input, ref context)
 
   string result = "";
   result = DLG_RunKnownFunction(functionName, &context, &args, argsCount);
-  if (result != "") return result;
+  if (result == "$custom") return DLG_RunCustomFunction(functionName, &args, argsCount);
 
-  return DLG_RunCustomFunction(functionName, &args, argsCount);
+  return result;
 }
 
 // Looking for up to 10 arguments
