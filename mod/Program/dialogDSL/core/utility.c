@@ -48,6 +48,8 @@ void DLG_SplitString(ref result, string input, string bySym, int iteration)
   result.(varName) = input;
   if (iPos < 0) return;
 
-  result.(varName) = strcut(input, 0, iPos-1);
+  if (iPos == 0) result.(varName) = "";
+  else result.(varName) = strcut(input, 0, iPos-1);
+
   DLG_SplitString(&result, strcut(&input, iPos+1, strlen(&input)-1), &bySym, iteration+1);
 }

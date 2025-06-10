@@ -18,9 +18,9 @@ void DLG_SetTests(ref tests)
   tests.manWoman2.expect = "i'm a man";
   tests.manWoman2.context = "man";
 
-  tests.manWoman3 = "$ctxManWoman(i'm a man|i'm a woman)";
-  tests.manWoman3.expect = "i'm a woman";
-  tests.manWoman3.context = "woman";
+  tests.manWoman3 = "$ctxManWoman(|i'm a woman)";
+  tests.manWoman3.expect = "";
+  tests.manWoman3.context = "man";
 
   tests.hasAttr0 = "$hasAttr(sex|A|B)";
   tests.hasAttr0.expect = "A";
