@@ -27,7 +27,7 @@ void DLG_RunAllFunctions(string input, ref context)
   DLG_RunAllFunctions(&input, &context)
 }
 
-// Looking for another $func inside the brackets like $func($func(args)) → $func(args)
+// Looking for another $func inside the brackets like $func($func(args)) → fills start/end indexes for "$func(args)"
 void DLG_FindNestedFunction(string input, int length, int start, int end)
 {
   int braceRPos = -1;
@@ -70,33 +70,21 @@ string DLG_RunFunction(string input, ref context)
 }
 
 // Looking for up to 10 arguments
-void DLG_ParseArguments(string sArguments, ref result, ref context)
+void DLG_ParseArguments(string sArguments, ref args, ref context)
 {
-  for (int i=0; i < 9; i++)
+  DLG_SplitString(&args, sArguments, "|", 0);
+
+  for (int i=0; i < GetAttributesNum(args); i++)
   {
-    if (DLG_GetNextArgument(&result, "arg" + i, &sArguments, &context)) return;
+    string argName = "var" + i;
+    args.(argName) = DLG_ApplyContextToArgument(args.(argName), &context);
   }
-}
-
-// Return the next argument from (arg|arg) string or return false if no arguments left
-bool DLG_GetNextArgument(ref result, string argName, string input, ref context)
-{
-  int iPos = findsubstr(input, "|", 0);
-
-  if (iPos < 0) result.(argName) = DLG_ApplyContextToArgument(input, &context);
-  else if (iPos < 1) result.(argName) = "";
-  else if (iPos == 1) result.(argName) = DLG_ApplyContextToArgument(GetSymbol(&input, 0), &context);
-  else result.(argName) = DLG_ApplyContextToArgument(strcut(input, 0, iPos-1), &context);
-  if (iPos < 0) return true;
-
-  input = strcut(input, iPos+1, strlen(&input)-1);
-  return false;
 }
 
 // If the argument starts with $objectName we take it's attribute by name without the "$objectName" part
 // $player.sex → calls .sex for pchar
 // $player.ship.name → calls .ship.name for pchar
-// $context.location.name → calls .location.name for the context object passed to the DLGO function
+// $context.location.name → calls .location.name for the context
 string DLG_ApplyContextToArgument(string argument, ref context)
 {
   int argLen = strlen(&argument);
@@ -116,16 +104,16 @@ string DLG_RunCustomFunction(string fnc, ref ar, int argsCount)
   switch (argsCount)
   {
     case 0:  return "Error: empty arguments is no allowed here"; break;
-    case 1:  return call fnc(ar.arg0); break;
-    case 2:  return call fnc(ar.arg0, ar.arg1); break;
-    case 3:  return call fnc(ar.arg0, ar.arg1, ar.arg2); break;
-    case 4:  return call fnc(ar.arg0, ar.arg1, ar.arg2, ar.arg3); break;
-    case 5:  return call fnc(ar.arg0, ar.arg1, ar.arg2, ar.arg3, ar.arg4); break;
-    case 6:  return call fnc(ar.arg0, ar.arg1, ar.arg2, ar.arg3, ar.arg4, ar.arg5); break;
-    case 7:  return call fnc(ar.arg0, ar.arg1, ar.arg2, ar.arg3, ar.arg4, ar.arg5, ar.arg6); break;
-    case 8:  return call fnc(ar.arg0, ar.arg1, ar.arg2, ar.arg3, ar.arg4, ar.arg5, ar.arg6, ar.arg7); break;
-    case 9:  return call fnc(ar.arg0, ar.arg1, ar.arg2, ar.arg3, ar.arg4, ar.arg5, ar.arg6, ar.arg7, ar.arg8); break;
-    case 10: return call fnc(ar.arg0, ar.arg1, ar.arg2, ar.arg3, ar.arg4, ar.arg5, ar.arg6, ar.arg7, ar.arg8, ar.arg9); break;
+    case 1:  return call fnc(ar.var0); break;
+    case 2:  return call fnc(ar.var0, ar.var1); break;
+    case 3:  return call fnc(ar.var0, ar.var1, ar.var2); break;
+    case 4:  return call fnc(ar.var0, ar.var1, ar.var2, ar.var3); break;
+    case 5:  return call fnc(ar.var0, ar.var1, ar.var2, ar.var3, ar.var4); break;
+    case 6:  return call fnc(ar.var0, ar.var1, ar.var2, ar.var3, ar.var4, ar.var5); break;
+    case 7:  return call fnc(ar.var0, ar.var1, ar.var2, ar.var3, ar.var4, ar.var5, ar.var6); break;
+    case 8:  return call fnc(ar.var0, ar.var1, ar.var2, ar.var3, ar.var4, ar.var5, ar.var6, ar.var7); break;
+    case 9:  return call fnc(ar.var0, ar.var1, ar.var2, ar.var3, ar.var4, ar.var5, ar.var6, ar.var7, ar.var8); break;
+    case 10: return call fnc(ar.var0, ar.var1, ar.var2, ar.var3, ar.var4, ar.var5, ar.var6, ar.var7, ar.var8, ar.var9); break;
   }
 
   return "Error: to much arguments";

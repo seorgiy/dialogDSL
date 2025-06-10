@@ -27,3 +27,15 @@ void DLG_ModifyRegister(string input, string key, int startPos)
   input = start + replace + end;
   DLG_ModifyRegister(&input, &key, markPos); // looking for the next replacement
 }
+
+void DLG_EscapeAllChars(string input)
+{
+  DLG_ReplaceAllMatches(&input, "\(", "{{", 0);
+  DLG_ReplaceAllMatches(&input, "\)", "}}", 0);
+}
+
+void DLG_UnescapeAllChars(string input)
+{
+  DLG_ReplaceAllMatches(&input, "{{", "(", 0);
+  DLG_ReplaceAllMatches(&input, "}}", ")", 0);
+}

@@ -16,32 +16,38 @@ string DLG_GetObjectAttributeSafe(ref obj, string attribute)
 // Just safety calls
 string DLG_A(ref args, int index)
 {
-  string argName = "arg" + index;
+  string argName = "var" + index;
   return DLG_GetObjectAttributeSafe(&args, &argName);
 }
 
+// func("aXbXcX", "X", "Y", 0) → "aYbYcY"
+// func("aXbXcX", "X", "Y", 3) → "aXbYcY"
 void DLG_ReplaceAllMatches(string input, string key, string replace, int curPos)
 {
   int markPos = FindSubStr(&input, key, curPos);
   if (markPos < 0) return;
+  int keyLength = strlen(&key);
 
   string start   = "";
   string end     = "";
   if (markPos > 0) start = strcut(input, 0, markPos-1);
-  end = strcut(input, markPos+2, strlen(&input)-1);
+  end = strcut(input, markPos+keyLength, strlen(&input)-1);
 
   input = start + replace + end;
   DLG_ReplaceAllMatches(input, &key, &replace, markPos); // looking for the next replacement
 }
 
-void DLG_EscapeAllChars(string input)
+// func(obj, "a|b|c", "|", 0) →
+//   obj.var0 = a
+//   obj.var1 = b
+//   obj.var2 = c
+void DLG_SplitString(ref result, string input, string bySym, int iteration)
 {
-  DLG_ReplaceAllMatches(&input, "\(", "{{", 0);
-  DLG_ReplaceAllMatches(&input, "\)", "}}", 0);
-}
+  string varName = "var" + iteration;
+  int iPos = findsubstr(input, "|", 0);
+  result.(varName) = input;
+  if (iPos < 0) return;
 
-void DLG_UnescapeAllChars(string input)
-{
-  DLG_ReplaceAllMatches(&input, "{{", "(", 0);
-  DLG_ReplaceAllMatches(&input, "}}", ")", 0);
+  result.(varName) = strcut(input, 0, iPos-1);
+  DLG_SplitString(&result, strcut(&input, iPos+1, strlen(&input)-1), &bySym, iteration+1);
 }

@@ -4,7 +4,7 @@
 string DLG_ShipClass(ref args, ref chr)
 {
   string end = "";
-  if (CheckAttribute(&args, "arg0")) end = DLG_A(&args, 0);
+  if (CheckAttribute(&args, "var0")) end = DLG_A(&args, 0);
   return xiStr(GetShipTypeName(&chr) + end);
 }
 

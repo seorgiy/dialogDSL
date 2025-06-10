@@ -23,6 +23,7 @@ string DLG_RunKnownFunction(string functionName, ref context, ref args, int args
     case "attr":            return DLG_A(&args, 0);                                                  break;
     case "ShipClass":       return DLG_ShipClass(&args, &pchar);                                     break;
     case "npcShipClass":    return DLG_ShipClass(&args, &NPC);                                       break;
+    case "ctxShipClass":    return DLG_ShipClass(&args, &context);                                   break;
     case "goodBad":         return DLG_GoodBad(&args, &pchar);                                       break;
     case "npcGoodBad":      return DLG_GoodBad(&args, &NPC);                                         break;
     case "key":             return xiStr(DLG_A(&args, 0));                                           break;
