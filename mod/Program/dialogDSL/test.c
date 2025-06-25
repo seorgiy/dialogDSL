@@ -69,6 +69,9 @@ void DLG_SetTests(ref tests)
   tests.custom0 = "$GetCityName(bridgetown) $name";
   tests.custom0.expect = GetCityName("bridgetown") + " " + pchar.name;
   tests.custom0.context = "pchar";
+
+  tests.common0 = "$rand($player.name|$npc.name)";
+  tests.common0.expect = pchar.name + "|" + CharacterRef.name;
 }
 
 void DLG_RunTests()

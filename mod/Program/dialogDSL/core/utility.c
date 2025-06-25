@@ -20,6 +20,24 @@ string DLG_A(ref args, int index)
   return DLG_GetObjectAttributeSafe(&args, &argName);
 }
 
+//Syntax sugar for first argument
+string DLG_A0(ref args)
+{
+  return DLG_A(&args, 0);
+}
+
+//Syntax sugar for second argument
+string DLG_A1(ref args)
+{
+  return DLG_A(&args, 1);
+}
+
+//Syntax sugar for third argument
+string DLG_A2(ref args)
+{
+  return DLG_A(&args, 2);
+}
+
 // func("aXbXcX", "X", "Y", 0) → "aYbYcY"
 // func("aXbXcX", "X", "Y", 3) → "aXbYcY"
 void DLG_ReplaceAllMatches(string input, string key, string replace, int curPos)
